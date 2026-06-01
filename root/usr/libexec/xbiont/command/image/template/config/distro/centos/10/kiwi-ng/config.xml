@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<image schemaversion="8.3" name="${X_IMAGE_NAME}"
+		displayname="Xbiont ${X_DISTRO_NAME} ${X_DISTRO_VERSION}">
+	<description type="system">
+		<author>Massimiliano Bugni</author>
+		<contact>massi.ergosum@gmail.com</contact>
+		<specification>${X_DISTRO_ID}-${X_DISTRO_VERSION}</specification>
+	</description>
+	<preferences>
+		<release-version>${X_DISTRO_VERSION}</release-version>
+		<version>${X_IMAGE_VERSION}</version>
+		<packagemanager>dnf4</packagemanager>
+		<rpm-check-signatures>true</rpm-check-signatures>
+		<locale>en_US</locale>
+		<keytable>us</keytable>
+		<timezone>UTC</timezone>
+	</preferences>
+	<include from="this://./repositories/centos.xml"/>
+	<include from="this://./repositories/epel.xml"/>
+	<include from="this://./repositories/rpmfusion.xml"/>
+	<include from="this://./components/boot.xml"/>
+	<include from="this://./components/common.xml"/>
+	<include from="this://./components/livesystem.xml"/>
+	<include from="this://./platforms/console.xml"/>
+	<include from="this://./platforms/desktop.xml"/>
+	<include from="this://./platforms/workstation.xml"/>
+	<packages type="bootstrap">
+		<package name="basesystem"/>
+		<package name="coreutils"/>
+		<package name="dnf"/>
+		<package name="dnf-plugins-core"/>
+		<package name="rootfiles"/>
+	</packages>
+</image>

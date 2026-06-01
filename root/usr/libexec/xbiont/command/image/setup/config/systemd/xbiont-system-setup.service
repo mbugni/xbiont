@@ -1,0 +1,16 @@
+# SPDX-License-Identifier: GPL-2.0-or-later
+# Copyright (c) 2026 Massimiliano Bugni
+
+[Unit]
+Description=System wide setup
+Before=getty@tty1.service
+Before=display-manager.service
+
+[Service]
+Type=oneshot
+Restart=no
+RemainAfterExit=no
+ExecStart=/usr/bin/xbiont system setup
+
+[Install]
+WantedBy=multi-user.target

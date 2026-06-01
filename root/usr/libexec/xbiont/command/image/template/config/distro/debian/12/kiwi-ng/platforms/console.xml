@@ -1,0 +1,17 @@
+<image>
+	<profiles>
+		<profile name="Console" description="Console environment">
+			<requires profile="BootCore"/>
+			<requires profile="CommonCore"/>
+			<requires profile="LiveSystemCore"/>
+		</profile>
+		<profile name="Console-en_US" description="Console with English (US) locale">
+			<requires profile="Console"/>
+			<requires profile="Locale-en_US"/>
+		</profile>
+		<profile name="Console-it_IT" description="Console with Italian (IT) locale">
+			<requires profile="Console"/>
+			<requires profile="Locale-it_IT"/>
+		</profile>
+	</profiles>
+</image>

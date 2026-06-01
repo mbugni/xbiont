@@ -1,0 +1,7 @@
+x::export_with_value 'X_DISTRO_ID' 'debian'
+x::export_with_value 'X_DISTRO_VERSION' '11'
+x::export_with_value 'X_DISTRO_NAME' 'Debian'
+x::export_with_value 'X_DISTRO_CODENAME' 'bullseye'
+x::export_with_value 'X_DESKTOP_CODENAME' 'trinity'
+x::export_with_value 'X_DESKTOP_VERSION' '14_1'
+x::export_with_default 'X_IMAGE_PLATFORM' 'i686'

@@ -1,0 +1,36 @@
+<image>
+	<profiles>
+		<profile name="LiveSystemCore" description="Live system core components"/>
+		<profile name="LiveSystemGraphical" description="Live system graphical">
+			<requires profile="LiveSystemCore"/>
+		</profile>
+	</profiles>
+	<packages type="image" profiles="LiveSystemCore">
+		<package name="dracut-live"/>
+		<package name="dracut-network"/>
+		<package name="dracut-squash"/>
+		<package name="plymouth-scripts"/>
+	</packages>
+	<packages type="image" profiles="LiveSystemGraphical">
+		<!-- Filter out unwanted EFI files from the embedded ESP, see rhbz#2358785 -->
+		<file name="iso-esp-excludes.yaml" target="image/exclude_files_efifatimage.yaml"/>
+		<!-- Graphical boot -->
+		<package name="plymouth-theme-spinner"/>
+		<!-- Anaconda installer -->
+		<package name="anaconda"/>
+		<package name="anaconda-install-env-deps"/>
+		<package name="anaconda-live"/>
+		<!-- Virtual machine guest agents -->
+		<package name="qemu-guest-agent"/>
+		<package name="spice-vdagent"/>
+	</packages>
+	<preferences>
+		<type image="iso" primary="true" flags="dmsquash" kernelcmdline="rhgb quiet" firmware="uefi"
+				publisher="${X_IMAGE_NAME}"
+				volid="${X_IMAGE_VOLUME_ID}"
+				application_id="${X_IMAGE_VOLUME_ID}">
+			<size unit="G">10</size>
+			<bootloader name="grub2"/>
+		</type>
+	</preferences>
+</image>

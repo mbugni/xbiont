@@ -1,0 +1,11 @@
+# SPDX-License-Identifier: GPL-2.0-or-later
+# Copyright (c) 2026 Massimiliano Bugni
+
+[Unit]
+Description=System cleanup
+
+[Service]
+Type=simple
+Restart=no
+RemainAfterExit=no
+ExecStart=/usr/bin/xbiont system cleanup

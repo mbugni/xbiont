@@ -1,0 +1,21 @@
+# SPDX-License-Identifier: GPL-2.0-or-later
+# Copyright (c) 2026 Massimiliano Bugni
+
+[Unit]
+Description=User session settings
+PartOf=graphical-session.target
+# Ensure that base environment is ready
+After=systemd-tmpfiles-setup.service
+After=dbus.socket
+# Start before the graphical session
+Before=graphical-session.target
+
+[Service]
+Type=oneshot
+Restart=no
+RemainAfterExit=yes
+ExecStartPre=/usr/bin/systemctl --user import-environment
+ExecStart=/usr/bin/xbiont session setup
+
+[Install]
+WantedBy=graphical-session.target

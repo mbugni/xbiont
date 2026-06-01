@@ -1,0 +1,7 @@
+<image>
+        <repository type="apt-deb" distribution="bullseye"
+                        components="main deps"
+                        repository_gpgcheck="false">
+                <source path="http://mirror.ppa.trinitydesktop.org/trinity/deb/trinity-r14.1.x" />
+        </repository>
+</image>

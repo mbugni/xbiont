@@ -1,0 +1,17 @@
+<image>
+        <repository type="apt-deb" distribution="bullseye"
+                        components="main contrib non-free" 
+                        repository_gpgcheck="false">
+                <source path="http://deb.debian.org/debian" />
+        </repository>
+        <repository type="apt-deb" distribution="bullseye-updates"
+                        components="main contrib non-free" 
+                        repository_gpgcheck="false">
+                <source path="http://deb.debian.org/debian" />
+        </repository>
+        <repository type="apt-deb" distribution="bullseye-security"
+                        components="main contrib non-free" 
+                        repository_gpgcheck="false">
+                <source path="http://security.debian.org/debian-security" />
+        </repository>
+</image>

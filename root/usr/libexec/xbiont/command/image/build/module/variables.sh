@@ -1,0 +1,9 @@
+x::export_with_default 'X_SEAT_PLATFORM'        'Workstation'
+x::export_with_default 'X_SEAT_LOCALE'          'en_US'
+x::export_with_default 'X_BUILD_SOURCE_DIR'     "$(pwd)"
+x::export_with_default 'X_BUILD_TEMPLATE_DIR'   "${X_BUILD_SOURCE_DIR}/template"
+x::export_with_default 'X_BUILD_KIWING_DIR'     "${X_BUILD_TEMPLATE_DIR}/kiwi-ng"
+x::export_with_default 'X_BUILD_TARGET_DIR'     "${X_BUILD_SOURCE_DIR}"
+x::export_with_default 'X_BUILD_COMMAND'        'system-build'
+x::export_with_default 'X_BUILD_RUNTIME'        'podman'
+x::export_with_default 'X_BUILD_PROFILE'        "${X_SEAT_PLATFORM}-${X_SEAT_LOCALE}"

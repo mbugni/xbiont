@@ -1,0 +1,101 @@
+<image>
+	<profiles>
+		<profile name="Desktop-Trinity" description="Trinity DE"/>
+		<profile name="Desktop" description="Desktop environment">
+			<requires profile="BootCore"/>
+			<requires profile="CommonCore"/>
+			<requires profile="Desktop-Trinity"/>
+			<requires profile="LiveSystemGraphical"/>
+		</profile>
+		<profile name="Desktop-en_US" description="Desktop with English (US) locale">
+			<requires profile="Desktop"/>
+			<requires profile="Locale-en_US"/>
+		</profile>
+		<profile name="Desktop-it_IT" description="Desktop with Italian (IT) locale">
+			<requires profile="Desktop"/>
+			<requires profile="Locale-it_IT"/>
+		</profile>
+	</profiles>
+	<packages type="image" profiles="Desktop">
+		<!-- Display server -->
+		<package name="xorg"/>
+		<!-- Display drivers -->
+		<package name="vdpau-driver-all"/>
+		<package name="va-driver-all"/>
+		<!-- package name="mesa-dri-drivers"/ -->
+		<!-- package name="mesa-omx-drivers"/ -->
+		<package name="mesa-vulkan-drivers"/>
+		<package name="xserver-xorg-video-all"/>
+		<package name="xserver-xorg-video-intel"/>
+		<package name="xserver-xorg-input-evdev"/>
+		<!-- Display tools -->
+		<package name="mesa-utils"/>
+		<package name="vulkan-tools"/>
+		<!-- Fonts -->
+		<package name="fonts-noto-core"/>
+		<package name="fonts-noto-mono"/>
+		<package name="fonts-noto-color-emoji"/>
+		<!-- Multimedia -->
+		<package name="alsa-utils"/>
+		<package name="alsa-ucm-conf"/> <!-- ALSA Use Case Manager -->
+		<package name="ffmpeg"/>
+		<package name="gstreamer1.0-packagekit"/>
+		<package name="gstreamer1.0-plugins-bad"/>
+		<package name="gstreamer1.0-plugins-good"/>
+		<package name="gstreamer1.0-plugins-ugly"/>
+		<package name="gstreamer1.0-x"/>
+		<package name="libcanberra-pulse"/>
+		<package name="media-player-info"/>
+		<package name="pulseaudio"/>
+		<package name="pulseaudio-utils"/>
+		<!-- Networking -->
+		<package name="gufw"/> <!-- Firewall management -->
+		<!-- System -->
+		<package name="lm-sensors"/>
+		<package name="udisks2"/>
+		<package name="upower"/>
+		<!-- Desktop -->
+		<package name="desktop-file-utils"/>
+		<package name="laptop-detect"/>
+		<package name="xdg-user-dirs"/>
+		<package name="xdg-utils"/>
+		<package name="task-desktop"/>
+		<package name="task-laptop"/>
+		<!-- Trinity Desktop Environment -->
+		<!-- desktop base -->
+		<package name="desktop-base-trinity"/>
+		<package name="polkit-agent-tde"/>
+		<package name="tdebase-trinity"/>
+		<!-- desktop apps -->
+		<package name="ark-trinity"/>
+		<package name="kcalc-trinity"/>
+		<package name="kcharselect-trinity"/>
+		<package name="kicker-applets-trinity"/>
+		<package name="kmilo-trinity"/>
+		<package name="ksnapshot-trinity"/>
+		<package name="kuser-trinity"/>
+		<package name="mplayerthumbs-trinity"/>
+		<package name="synaptic-trinity"/>
+		<package name="tdesudo-trinity"/>
+		<package name="xdg-desktop-portal-trinity"/>
+		<!-- device control -->
+		<package name="filelight-trinity"/>
+		<package name="kdf-trinity"/>
+		<package name="kmix-trinity"/>
+		<package name="krec-trinity"/>
+		<package name="kscd-trinity"/>
+		<package name="tdemid-trinity"/>
+		<package name="tdenetworkmanager-trinity"/>
+		<package name="tdepowersave-trinity"/>
+		<package name="tdescreensaver-trinity"/>
+		<!-- styles and themes -->
+		<package name="gtk2-engines"/>
+		<package name="gtk-qt-engine-trinity"/>
+		<package name="gtk3-tqt-engine-trinity"/>
+		<package name="tdeartwork-trinity"/>
+		<package name="tdmtheme-trinity"/>
+	</packages>
+	<packages type="image" profiles="Desktop-it_IT">
+		<package name="tde-i18n-it-trinity"/>
+	</packages>
+</image>

@@ -1,0 +1,16 @@
+[Unit]
+Description=System cleanup timer - runs weekly after boot
+
+[Timer]
+# Wait 3 minutes after boot
+OnBootSec=3min
+
+# Define weekly interval
+OnCalendar=weekly
+
+# Remember last execution. 
+# If the task has already been executed this week, it will not be repeated at the next boot.
+Persistent=true
+
+[Install]
+WantedBy=timers.target

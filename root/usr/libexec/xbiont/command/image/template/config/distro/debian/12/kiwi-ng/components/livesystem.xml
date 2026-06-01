@@ -1,0 +1,32 @@
+<image>
+	<profiles>
+		<profile name="LiveSystemCore" description="Live system core components"/>
+		<profile name="LiveSystemGraphical" description="Live system graphical">
+			<requires profile="LiveSystemCore"/>
+		</profile>
+	</profiles>
+	<packages type="image" profiles="LiveSystemCore">
+		<package name="dracut-live"/>
+		<package name="dracut-network"/>
+		<package name="dracut-squash"/>
+		<package name="plymouth"/>
+	</packages>
+	<packages type="image" profiles="LiveSystemGraphical">
+		<package name="plymouth-themes"/>
+		<!-- Calamares installer -->
+		<package name="calamares"/>
+		<package name="calamares-settings-debian"/>
+		<!-- Virtual machine guest agents -->
+		<package name="qemu-guest-agent"/>
+		<package name="spice-vdagent"/>
+		<package name="xserver-xorg-video-qxl"/>
+	</packages>
+	<preferences>
+		<type image="iso" flags="dmsquash" firmware="efi" kernelcmdline="splash quiet"
+				publisher="${X_IMAGE_NAME}"
+				volid="${X_IMAGE_VOLUME_ID}"
+				application_id="${X_IMAGE_VOLUME_ID}">
+			<bootloader name="grub2"/>
+		</type>
+	</preferences>
+</image>

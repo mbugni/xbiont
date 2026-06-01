@@ -1,0 +1,103 @@
+<image>
+	<profiles>
+		<profile name="CommonCore" description="Core packages"/>
+		<profile name="Common-l10n" description="Localization"/>
+		<profile name="Locale-en_US" description="English (US) locale">
+			<requires profile="Common-l10n"/>
+		</profile>
+		<profile name="Locale-it_IT" description="Italian (Italy) locale">
+			<requires profile="Common-l10n"/>
+		</profile>
+	</profiles>
+	<packages type="image" profiles="CommonCore">
+		<!-- Core packages -->
+		<package name="bash-completion"/>
+		<package name="binutils"/>
+		<package name="console-setup"/>
+		<package name="console-setup-linux"/>
+		<package name="login"/>
+		<package name="man-db"/>
+		<package name="manpages"/>
+		<package name="sudo"/>
+		<!-- Firmware -->
+		<package name="firmware-linux"/>
+		<package name="firmware-linux-free"/>
+		<package name="firmware-linux-nonfree"/>
+		<package name="firmware-misc-nonfree"/>
+		<package name="fwupd"/>
+		<package name="fwupd-amd64-signed" arch="x86_64"/>
+		<!-- Hardware support -->
+		<package name="firmware-amd-graphics"/>
+		<package name="firmware-ath9k-htc"/>
+		<package name="firmware-brcm80211"/>
+		<package name="firmware-iwlwifi"/>
+		<package name="firmware-realtek"/>
+		<package name="firmware-sof-signed"/>
+		<package name="firmware-ti-connectivity"/>
+		<package name="amd64-microcode"/>
+		<package name="intel-microcode"/>
+		<package name="usb-modeswitch"/>
+		<!-- Diagnostics -->
+		<package name="dmidecode"/>
+		<package name="pciutils"/>
+		<package name="usbutils"/>
+		<!-- Networking -->
+		<package name="bind9-dnsutils"/>
+		<package name="curl"/>
+		<package name="iproute2"/>
+		<package name="iputils-ping"/>
+		<package name="libnss-mdns"/>
+		<package name="network-manager"/>
+		<package name="firewalld"/> <!-- Firewall management -->
+		<package name="avahi-daemon"/>
+		<package name="systemd-timesyncd"/>
+		<package name="wget"/>
+		<package name="wireless-regdb"/>
+		<package name="wireless-tools"/>
+		<package name="wpasupplicant"/>
+		<!-- Fileystem support -->
+		<package name="btrfs-progs"/>
+		<package name="dosfstools"/>
+		<package name="e2fsprogs"/>
+		<package name="exfatprogs"/>
+		<package name="ntfs-3g"/>
+		<package name="xfsprogs"/>
+		<package name="parted"/>
+		<!-- System -->
+		<package name="initramfs-tools"/>
+		<package name="plymouth"/>
+		<package name="software-properties-common"/>
+		<!-- Tools -->
+		<package name="less"/>
+		<package name="psmisc"/>
+		<package name="clinfo"/>
+		<package name="htop"/>
+		<package name="nano"/>
+		<package name="neofetch"/>
+		<package name="p7zip"/>
+		<package name="rsync"/>
+		<package name="tree"/>
+		<package name="unar"/>
+		<package name="unrar"/>
+		<package name="zip"/>
+		<package name="zstd"/>
+	</packages>
+	<preferences profiles="Locale-en_US">
+		<locale>en_US</locale>
+		<keytable>us</keytable>
+		<timezone>America/New_York</timezone>
+	</preferences>
+	<packages type="image" profiles="Locale-en_US">
+		<package name="hunspell-en-us"/>
+		<package name="task-english"/>
+	</packages>
+	<preferences profiles="Locale-it_IT">
+		<locale>it_IT</locale>
+		<keytable>it</keytable>
+		<timezone>Europe/Rome</timezone>
+	</preferences>
+	<packages type="image" profiles="Locale-it_IT">
+		<package name="hunspell-it"/>
+		<package name="task-italian"/>
+	</packages>
+</image>

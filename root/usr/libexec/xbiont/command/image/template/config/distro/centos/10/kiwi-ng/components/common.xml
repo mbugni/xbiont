@@ -1,0 +1,110 @@
+<image>
+	<profiles>
+		<profile name="CommonCore" description="Core packages"/>
+		<profile name="Common-l10n" description="Localization"/>
+		<profile name="Locale-en_US" description="English (US) locale">
+			<requires profile="Common-l10n"/>
+		</profile>
+		<profile name="Locale-it_IT" description="Italian (Italy) locale">
+			<requires profile="Common-l10n"/>
+		</profile>
+	</profiles>
+	<packages type="image" profiles="CommonCore">
+		<!-- Core packages -->
+		<package name="bash-completion"/>
+		<package name="binutils"/>
+		<!-- package name="console-setup"/ -->
+		<package name="man-db"/>
+		<package name="passwd"/>
+		<package name="policycoreutils"/>
+		<package name="procps-ng"/>
+		<package name="selinux-policy-targeted"/>
+		<package name="sudo"/>
+		<package name="util-linux"/>
+		<!-- Firmware -->
+		<package name="linux-firmware"/>
+		<package name="fwupd"/>
+		<package name="fwupd-efi"/>
+		<!-- Hardware support -->
+		<package name="amd-gpu-firmware"/>
+		<package name="nvidia-gpu-firmware"/>
+		<package name="intel-gpu-firmware"/>
+		<package name="atheros-firmware"/>
+		<!-- package name="b43-openfwwf"/ -->
+		<package name="brcmfmac-firmware"/>
+		<!-- package name="qcom-wwan-firmware"/ -->
+		<package name="iwlwifi-dvm-firmware"/>
+		<package name="iwlwifi-mvm-firmware"/>
+		<package name="mt7xxx-firmware"/>
+		<package name="realtek-firmware"/>
+		<package name="alsa-sof-firmware"/>
+		<package name="tiwilink-firmware"/>
+		<package name="microcode_ctl"/>
+		<!-- package name="usb_modeswitch"/ -->
+		<!-- Diagnostics -->
+		<package name="dmidecode"/>
+		<package name="pciutils"/>
+		<package name="usbutils"/>
+		<!-- Networking -->
+		<package name="bind-utils"/>
+		<package name="curl"/>
+		<package name="NetworkManager-wifi"/>
+		<package name="net-tools"/>
+		<package name="firewalld"/> <!-- Firewall management -->
+		<package name="systemd-resolved"/>
+		<package name="wget"/>
+		<package name="wireless-regdb"/>
+		<package name="wpa_supplicant"/>
+		<!-- Fileystem support -->
+		<package name="btrfs-progs"/>
+		<package name="dosfstools"/>
+		<package name="e2fsprogs"/>
+		<package name="exfatprogs"/>
+		<!-- package name="f2fs-tools"/ -->
+		<package name="ntfs-3g"/>
+		<package name="xfsprogs"/>
+		<package name="parted"/>
+		<!-- System -->
+		<package name="rpm-plugin-systemd-inhibit"/>
+		<!-- package name="systemd-oomd-defaults"/ -->
+		<!-- Tools -->
+		<package name="psmisc"/>
+		<package name="clinfo"/>
+		<package name="htop"/>
+		<package name="nano"/>
+		<package name="fastfetch"/>
+		<package name="p7zip"/>
+		<package name="rsync"/>
+		<package name="tree"/>
+		<!-- package name="unar"/ -->
+		<package name="unrar"/>
+		<package name="zip"/>
+		<package name="zstd"/>
+		<!-- RPM Fusion repositories -->
+		<package name="rpmfusion-free-release"/>
+		<!-- package name="rpmfusion-free-release-tainted"/ -->
+		<package name="rpmfusion-nonfree-release"/>
+		<!-- package name="rpmfusion-nonfree-release-tainted"/ -->
+		<!-- package name="rpmfusion-*-appstream-data"/ -->
+	</packages>
+	<preferences profiles="Locale-en_US">
+		<locale>en_US</locale>
+		<keytable>us</keytable>
+		<timezone>America/New_York</timezone>
+	</preferences>
+	<packages type="image" profiles="Locale-en_US">
+		<package name="glibc-langpack-en"/>
+		<package name="hunspell-en"/>
+		<package name="langpacks-en"/>
+	</packages>
+	<preferences profiles="Locale-it_IT">
+		<locale>it_IT</locale>
+		<keytable>it</keytable>
+		<timezone>Europe/Rome</timezone>
+	</preferences>
+	<packages type="image" profiles="Locale-it_IT">
+		<package name="glibc-langpack-it"/>
+		<package name="hunspell-it"/>
+		<package name="langpacks-it"/>
+	</packages>
+</image>

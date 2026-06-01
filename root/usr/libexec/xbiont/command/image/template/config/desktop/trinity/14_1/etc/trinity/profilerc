@@ -1,0 +1,20 @@
+[text/plain - 1]
+AllowAsDefault=true
+Application=tde-kwrite.desktop
+GenericServiceType=Application
+Preference=2
+ServiceType=text/plain
+
+[text/plain - 2]
+AllowAsDefault=true
+Application=tde-kate.desktop
+GenericServiceType=Application
+Preference=1
+ServiceType=text/plain
+
+[text/plain - 3]
+AllowAsDefault=true
+Application=katepart.desktop
+GenericServiceType=KParts/ReadOnlyPart
+Preference=1
+ServiceType=text/plain

@@ -1,0 +1,111 @@
+<image>
+	<profiles>
+		<profile name="Desktop-Plasma" description="KDE Plasma Desktop"/>
+		<profile name="Desktop" description="Desktop environment">
+			<requires profile="BootCore"/>
+			<requires profile="CommonCore"/>
+			<requires profile="Desktop-Plasma"/>
+			<requires profile="LiveSystemGraphical"/>
+		</profile>
+		<profile name="Desktop-en_US" description="Desktop with English (US) locale">
+			<requires profile="Desktop"/>
+			<requires profile="Locale-en_US"/>
+		</profile>
+		<profile name="Desktop-it_IT" description="Desktop with Italian (IT) locale">
+			<requires profile="Desktop"/>
+			<requires profile="Locale-it_IT"/>
+		</profile>
+	</profiles>
+	<packages type="image" profiles="Desktop">
+		<!-- Display drivers -->
+		<package name="mesa-dri-drivers"/>
+		<!-- package name="mesa-omx-drivers"/ -->
+		<package name="mesa-vulkan-drivers"/>
+		<!-- Display tools -->
+		<package name="egl-utils"/>
+		<package name="glx-utils"/>
+		<package name="vulkan-tools"/>
+		<package name="xdpyinfo"/>
+		<!-- Fonts -->
+		<package name="default-fonts-core"/>
+		<package name="google-noto-sans-symbols-fonts"/>
+		<package name="google-noto-sans-symbols-2-fonts"/>
+		<package name="google-noto-sans-symbols-vf-fonts"/>
+		<!-- Multimedia -->
+		<package name="alsa-utils"/>
+		<package name="alsa-ucm"/> <!-- ALSA Use Case Manager -->
+		<package name="PackageKit-gstreamer-plugin"/>
+		<package name="ffmpeg"/>
+		<package name="gstreamer1-plugin-libav"/> <!-- FFmpeg/LibAV GStreamer plugin -->
+		<package name="gstreamer1-plugins-bad-free"/>
+		<package name="gstreamer1-plugins-good"/>
+		<package name="gstreamer1-plugins-ugly-free"/>
+		<!-- package name="gstreamer1-vaapi"/ -->
+		<package name="libjxl"/> <!-- Library files for JPEG-XL -->
+		<package name="pipewire-alsa"/>
+		<package name="pipewire-gstreamer"/>
+		<package name="pipewire-jack-audio-connection-kit"/>
+		<package name="pipewire-pulseaudio"/>
+		<package name="pipewire-utils"/>
+		<!-- package name="realtime-setup"/ -->
+		<!-- Video Acceleration API -->
+		<package name="libva"/>
+		<package name="intel-media-driver"/>
+		<!-- Networking -->
+		<package name="firewall-config"/>
+		<!-- System -->
+		<package name="flatpak"/>
+		<package name="lm_sensors"/>
+		<package name="tuned-ppd"/>
+		<package name="udisks2"/>
+		<package name="upower"/>
+		<!-- KDE -->
+		<package name="aha"/> <!-- Convert terminal output to HTML for KDE tools -->
+		<package name="ark"/>
+		<package name="breeze-gtk"/>
+		<package name="dolphin"/>
+		<package name="falkon"/>
+		<package name="ffmpegthumbs"/>
+		<package name="flatpak-kcm"/>
+		<package name="ibus"/>
+		<package name="kcalc"/>
+		<package name="kcharselect"/>
+		<!-- package name="kcm_systemd"/ -->
+		<package name="kde-gtk-config"/>
+		<package name="kde-partitionmanager"/>
+		<package name="kdegraphics-thumbnailers"/>
+		<package name="kdeplasma-addons"/>
+		<package name="kf6-kio"/>
+		<package name="kf6-ki18n"/>
+		<package name="kf6-sonnet-hunspell"/>
+		<package name="khelpcenter"/>
+		<package name="kinfocenter"/>
+		<package name="kgamma"/>
+		<package name="konsole"/>
+		<package name="kscreen"/>
+		<package name="kwalletmanager5"/>
+		<package name="kwin"/>
+		<package name="kwrite"/>
+		<package name="pam-kwallet"/>
+		<package name="plasma-breeze"/>
+		<package name="plasma-desktop"/>
+		<package name="plasma-discover-flatpak"/>
+		<package name="plasma-discover-packagekit"/>
+		<package name="plasma-discover-notifier"/>
+		<package name="plasma-milou"/>
+		<package name="plasma-nm"/><!-- Network Manager -->
+		<package name="plasma-pa"/><!-- Pulse Audio -->
+		<package name="plasma-systemmonitor"/>
+		<package name="plasma-thunderbolt"/>
+		<package name="plasma-workspace"/>
+		<package name="polkit-kde"/>
+		<package name="powerdevil"/>
+		<package name="sddm"/>
+		<package name="sddm-breeze"/>
+		<package name="sddm-kcm"/>
+		<package name="spectacle"/>
+		<package name="svgpart"/>
+		<package name="sweeper"/>
+		<package name="xdg-desktop-portal-kde"/>
+	</packages>
+</image>

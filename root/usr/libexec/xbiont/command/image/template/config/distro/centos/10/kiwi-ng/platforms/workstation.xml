@@ -1,0 +1,55 @@
+<image>
+	<profiles>
+		<profile name="Workstation" description="Workstation environment">
+			<requires profile="Desktop"/>
+		</profile>
+		<profile name="Workstation-en_US" description="Workstation with English (US) locale">
+			<requires profile="Workstation"/>
+			<requires profile="Desktop-en_US"/>
+		</profile>
+		<profile name="Workstation-it_IT" description="Workstation with Italian (IT) locale">
+			<requires profile="Workstation"/>
+			<requires profile="Desktop-it_IT"/>
+		</profile>
+	</profiles>
+	<packages type="image" profiles="Workstation">
+		<!-- Bluetooth -->
+		<package name="bluedevil"/>
+		<!-- package name="bluez-hid2hci"/ --> 
+		<package name="bluez-obexd"/>
+		<!-- package name="bluez-tools"/ -->
+		<!-- Connectivity -->
+		<package name="ipp-usb"/>
+		<package name="kde-connect"/>
+		<package name="kio-extras"/>
+		<!-- Hardware support -->
+		<package name="iscan-firmware"/>
+		<package name="libsane-hpaio"/>
+		<!-- Networking -->
+		<package name="NetworkManager-bluetooth"/>
+		<package name="NetworkManager-wwan"/>
+		<package name="samba-client"/>
+		<!-- Printing -->
+		<package name="bluez-cups"/>
+		<package name="cups"/>
+		<package name="cups-browsed"/>
+		<package name="cups-filters"/>
+		<package name="cups-ipptool"/>
+		<package name="cups-lpd"/>
+		<package name="cups-pk-helper"/>
+		<package name="ghostscript"/>
+		<package name="gutenprint-cups"/>
+		<package name="hplip"/>
+		<package name="paps"/>
+		<package name="plasma-print-manager"/>
+		<package name="system-config-printer-libs"/>
+		<package name="system-config-printer-udev"/>
+		<!-- Scanning -->
+		<package name="sane-backends-daemon"/>
+		<package name="sane-backends-drivers-cameras"/>
+		<package name="sane-backends-drivers-scanners"/>		
+	</packages>
+	<packages type="uninstall" profiles="Workstation">
+        <package name="falkon"/>
+    </packages>
+</image>

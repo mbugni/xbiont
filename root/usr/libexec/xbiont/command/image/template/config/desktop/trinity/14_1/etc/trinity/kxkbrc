@@ -1,0 +1,11 @@
+[Layout]
+LayoutList=us
+Model=pc104
+Options=
+ResetOldOptions=true
+ShowFlag=true
+ShowLabel=true
+ShowLayoutIndicator=true
+ShowSingle=false
+SwitchMode=Global
+Use=true

@@ -1,0 +1,24 @@
+FROM ${X_CONTAINER_REGISTRY}:${X_DISTRO_VERSION}-slim
+
+COPY entrypoint.sh /usr/local/bin/
+ENTRYPOINT ["/usr/local/bin/entrypoint.sh"]
+
+RUN chmod +x /usr/local/bin/entrypoint.sh && \
+apt-get update && \
+apt-get --assume-yes upgrade && \
+apt-get --assume-yes install \
+        systemd \
+        bash-completion \
+        sudo \
+        dosfstools \
+        e2fsprogs \
+        mtools \
+        squashfs-tools \
+        qemu-utils \
+        rsync \
+        xorriso \
+        grub-pc-bin \
+        python3-pip && \
+pip3 install ${X_PIP3_OPTIONS} --exists-action=i kiwi==10.2.* && \
+[ -e /usr/bin/bash ] || ln -s /bin/bash /usr/bin/bash && \
+apt-get autoclean

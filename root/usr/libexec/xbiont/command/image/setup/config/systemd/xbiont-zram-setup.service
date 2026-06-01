@@ -1,0 +1,20 @@
+# SPDX-License-Identifier: GPL-2.0-or-later
+# Copyright (c) 2026 Massimiliano Bugni
+
+[Unit]
+Description=Xbiont Zram Setup Service
+After=local-fs.target systemd-journald.service
+Conflicts=shutdown.target
+DefaultDependencies=false
+
+[Service]
+Type=oneshot
+RemainAfterExit=yes
+ExecStart=/usr/bin/xbiont zram setup
+ExecStop=/usr/bin/xbiont zram reset
+ProtectHome=yes
+ProtectSystem=full
+ReadWritePaths=/sys /proc /dev
+
+[Install]
+WantedBy=multi-user.target graphical.target

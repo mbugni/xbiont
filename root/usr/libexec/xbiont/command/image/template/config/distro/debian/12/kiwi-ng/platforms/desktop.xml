@@ -1,0 +1,124 @@
+<image>
+	<profiles>
+		<profile name="Desktop-Plasma" description="KDE Plasma Desktop"/>
+		<profile name="Desktop" description="Desktop environment">
+			<requires profile="BootCore"/>
+			<requires profile="CommonCore"/>
+			<requires profile="Desktop-Plasma"/>
+			<requires profile="LiveSystemGraphical"/>
+		</profile>
+		<profile name="Desktop-en_US" description="Desktop with English (US) locale">
+			<requires profile="Desktop"/>
+			<requires profile="Locale-en_US"/>
+		</profile>
+		<profile name="Desktop-it_IT" description="Desktop with Italian (IT) locale">
+			<requires profile="Desktop"/>
+			<requires profile="Locale-it_IT"/>
+		</profile>
+	</profiles>
+	<packages type="image" profiles="Desktop">
+		<!-- Display server -->
+		<package name="xorg"/>
+		<!-- Display drivers -->
+		<package name="intel-media-va-driver-non-free"/>
+		<package name="va-driver-all"/>
+		<package name="mesa-vulkan-drivers"/>
+		<package name="xserver-xorg-video-all"/>
+		<package name="xserver-xorg-video-intel"/>
+		<package name="xserver-xorg-input-evdev"/>
+		<!-- Display tools -->
+		<package name="mesa-utils"/>
+		<package name="vulkan-tools"/>
+		<!-- Fonts -->
+		<package name="fonts-noto-core"/>
+		<package name="fonts-noto-mono"/>
+		<package name="fonts-noto-color-emoji"/>
+		<!-- Multimedia -->
+		<package name="alsa-utils"/>
+		<package name="alsa-ucm-conf"/> <!-- ALSA Use Case Manager -->
+		<package name="ffmpeg"/>
+		<package name="gstreamer1.0-packagekit"/>
+		<package name="gstreamer1.0-pipewire"/>
+		<package name="gstreamer1.0-plugins-bad"/>
+		<package name="gstreamer1.0-plugins-good"/>
+		<package name="gstreamer1.0-plugins-ugly"/>
+		<package name="gstreamer1.0-x"/>
+		<package name="libcanberra-pulse"/>
+		<package name="libjxl-tools"/>
+		<package name="media-player-info"/>
+		<package name="pipewire-audio"/>
+		<package name="pipewire-jack"/>
+		<package name="pulseaudio-utils"/>
+		<!-- Networking -->
+		<package name="firewall-config"/> <!-- Firewall management -->
+		<!-- System -->
+		<package name="flatpak"/>
+		<package name="lm-sensors"/>
+		<package name="power-profiles-daemon"/> <!-- Resource profiles -->
+		<package name="udisks2"/>
+		<package name="upower"/>
+		<!-- Desktop -->
+		<package name="desktop-file-utils"/>
+		<package name="laptop-detect"/>
+		<package name="xdg-user-dirs"/>
+		<package name="xdg-utils"/>
+		<package name="task-desktop"/>
+		<package name="task-laptop"/>
+		<!-- KDE -->
+		<package name="aha"/> <!-- Convert terminal output to HTML for KDE tools -->
+		<package name="ark"/>
+		<package name="breeze-gtk-theme"/>
+		<package name="dolphin"/>
+		<package name="falkon"/>
+		<package name="featherpad"/>
+		<package name="featherpad-l10n"/>
+		<package name="ffmpegthumbs"/>
+		<package name="kde-config-flatpak"/>
+		<!-- package name="ibus"/ -->
+		<package name="kactivities-bin"/>
+		<package name="kcalc"/>
+		<package name="kcharselect"/>
+		<package name="kde-config-gtk-style"/>
+		<package name="kde-config-gtk-style-preview"/>
+		<package name="partitionmanager"/>
+		<package name="kde-style-breeze"/>
+		<package name="kdegraphics-thumbnailers"/>
+		<package name="plasma-runners-addons"/>
+		<package name="plasma-widgets-addons"/>
+		<package name="khelpcenter"/>
+		<package name="kinfocenter"/>
+		<package name="kio-extras"/>
+		<package name="kgamma5"/>
+		<package name="konsole"/>
+		<package name="kscreen"/>
+		<package name="ktexteditor-katepart"/>
+		<package name="kwalletmanager"/>
+		<package name="kwin-x11"/>
+		<package name="kwin-addons"/>
+		<package name="kwin-style-breeze"/>
+		<package name="libpam-kwallet5"/>
+		<package name="plasma-desktop"/>
+		<package name="plasma-discover"/>
+		<package name="plasma-discover-backend-flatpak"/>
+		<package name="plasma-discover-backend-fwupd"/>
+		<package name="milou"/>
+		<package name="plasma-nm"/> <!-- Network Manager -->
+		<package name="plasma-pa"/> <!-- Pulse Audio -->
+		<package name="plasma-systemmonitor"/>
+		<package name="plasma-thunderbolt"/>
+		<package name="plasma-workspace"/>
+		<package name="polkit-kde-agent-1"/>
+		<package name="powerdevil"/>
+		<package name="sddm"/>
+		<package name="sddm-theme-debian-breeze"/>
+		<package name="kde-config-sddm"/>
+		<package name="sonnet-plugins"/>
+		<package name="kde-spectacle"/>
+		<package name="svgpart"/>
+		<package name="sweeper"/>
+		<package name="xdg-desktop-portal-kde"/>
+	</packages>
+	<packages type="image" profiles="Desktop-it_IT">
+		<package name="task-italian-kde-desktop"/>
+	</packages>
+</image>
