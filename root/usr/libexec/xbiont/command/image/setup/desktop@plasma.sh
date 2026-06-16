@@ -7,8 +7,13 @@
 
 x::log_info 'Configuring Plasma desktop'
 
-echo 'Enable SDDM login manager'
-systemctl enable sddm.service
+if [ -n "$(systemctl status sddm.service 2> /dev/null)" ]; then
+	echo 'Enabling SDDM service'
+	systemctl enable sddm.service
+else
+	echo 'Enabling plasmalogin service'
+	systemctl enable plasmalogin.service
+fi
 
 if [ "$X_SEAT_KEYTABLE" != 'us' ]; then
 	echo "Setup Plasma keyboard ${X_SEAT_KEYTABLE} ${X_SEAT_KEYMODEL}"

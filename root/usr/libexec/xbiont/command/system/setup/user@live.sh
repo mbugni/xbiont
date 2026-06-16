@@ -5,7 +5,7 @@
 #
 # system-setup/user@live: ensure liveuser and basic settings
 
-[ "$(id --user --name liveuser)" = "liveuser" ] && exit 0
+[ "$(id --user --name liveuser 2> /dev/null)" = "liveuser" ] && exit 0
 
 liveuser_groups=""
 for expected_group in 'audio' 'video' 'wheel' 'adm' 'sudo'; do

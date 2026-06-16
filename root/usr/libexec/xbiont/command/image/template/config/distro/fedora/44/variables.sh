@@ -1,0 +1,7 @@
+x::export_with_value 'X_DISTRO_ID' 'fedora'
+x::export_with_value 'X_DISTRO_VERSION' '44'
+x::export_with_value 'X_DISTRO_NAME' 'Fedora'
+x::export_with_value 'X_DISTRO_CODENAME' 'fc44'
+x::export_with_value 'X_DESKTOP_CODENAME' 'plasma'
+x::export_with_value 'X_DESKTOP_VERSION' '6'
+x::export_with_default 'X_IMAGE_PLATFORM' 'x86_64'

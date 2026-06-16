@@ -5,6 +5,20 @@
 #
 # system-setup-autologin@live: ensure autologin for liveuser
 
+function x::ensure_plasmalogin_autologin() {
+echo 'Ensure plasmalogin autologin'
+if [ -f /etc/plasmalogin.conf ]; then
+    sed -i 's/^#User=.*/User=liveuser/' /etc/plasmalogin.conf
+    sed -i "s/^#Session=.*/Session=plasma.desktop/" /etc/plasmalogin.conf
+else
+cat > /etc/plasmalogin.conf << PLASMALOGIN_EOF
+[Autologin]
+User=liveuser
+Session=plasma.desktop
+PLASMALOGIN_EOF
+fi
+}
+
 function x::ensure_sddm_autologin() {
 echo 'Ensure sddm autologin'
 if [ -f /etc/sddm.conf ]; then
@@ -49,6 +63,9 @@ GETTY_EOF
 display_manger_id="$(systemctl show --property=Id --value display-manager.service)"
 echo "Detected display manager is: $display_manger_id"
 case "$display_manger_id" in
+    'plasmalogin.service')
+        x::ensure_plasmalogin_autologin
+    ;;
     'sddm.service')
         x::ensure_sddm_autologin
     ;;
