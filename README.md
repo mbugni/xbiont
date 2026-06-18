@@ -43,7 +43,7 @@ The following table illustrates the supported distributions and their intended t
 | Debian 12    | x86_64       | 2011-2020    | KDE Plasma 5.x  |
 | CentOS 10    | x86_64 v3    | 2021-now     | KDE Plasma 6.x  |
 | Fedora 43    | x86_64       | 2021-now     | KDE Plasma 6.x  |
-| Fedora 44    | x86_64       | 2026-now     | KDE Plasma 6.x  |
+| Fedora 44    | x86_64       | 2021-now     | KDE Plasma 6.x  |
 
 The fundamental building blocks of the symbiont are:
 

@@ -19,7 +19,6 @@
 	<packages type="image" profiles="Desktop">
 		<!-- Display drivers -->
 		<package name="mesa-dri-drivers"/>
-		<!-- package name="mesa-omx-drivers"/ -->
 		<package name="mesa-vulkan-drivers"/>
 		<!-- Display tools -->
 		<package name="egl-utils"/>
@@ -67,10 +66,10 @@
 		<package name="falkon"/>
 		<package name="ffmpegthumbs"/>
 		<package name="flatpak-kcm"/>
-		<package name="ibus"/>
 		<package name="kcalc"/>
 		<package name="kcharselect"/>
-		<!-- package name="kcm_systemd"/ -->
+		<package name="kcm-plasmalogin"/>
+		<package name="kde-settings-plasmalogin"/>
 		<package name="kde-gtk-config"/>
 		<package name="kde-partitionmanager"/>
 		<package name="kdegraphics-thumbnailers"/>
@@ -92,6 +91,7 @@
 		<package name="plasma-discover-flatpak"/>
 		<package name="plasma-discover-packagekit"/>
 		<package name="plasma-discover-notifier"/>
+		<package name="plasma-login-manager"/>
 		<package name="plasma-milou"/>
 		<package name="plasma-nm"/><!-- Network Manager -->
 		<package name="plasma-pa"/><!-- Pulse Audio -->
@@ -100,9 +100,6 @@
 		<package name="plasma-workspace"/>
 		<package name="polkit-kde"/>
 		<package name="powerdevil"/>
-		<package name="sddm"/>
-		<package name="sddm-breeze"/>
-		<package name="sddm-kcm"/>
 		<package name="spectacle"/>
 		<package name="svgpart"/>
 		<package name="sweeper"/>

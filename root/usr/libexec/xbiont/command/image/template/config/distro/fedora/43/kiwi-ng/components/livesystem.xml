@@ -29,7 +29,6 @@
 				publisher="${X_IMAGE_NAME}"
 				volid="${X_IMAGE_VOLUME_ID}"
 				application_id="${X_IMAGE_VOLUME_ID}">
-			<size unit="G">10</size>
 			<bootloader name="grub2"/>
 		</type>
 	</preferences>

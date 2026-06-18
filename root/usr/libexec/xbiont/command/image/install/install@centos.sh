@@ -7,4 +7,4 @@
 
 installer_path="/usr/bin/liveinst"
 x::log_info "Running as privileged: $installer_path"
-exec pkexec $installer_path
+exec pkexec $installer_path --profile centos
