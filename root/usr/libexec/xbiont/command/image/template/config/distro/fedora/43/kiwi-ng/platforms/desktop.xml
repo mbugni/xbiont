@@ -48,6 +48,7 @@
 		<package name="pipewire-jack-audio-connection-kit"/>
 		<package name="pipewire-pulseaudio"/>
 		<package name="pipewire-utils"/>
+		<package name="qt6-qtimageformats"/>
 		<package name="realtime-setup"/>
 		<!-- Video Acceleration API -->
 		<package name="libva"/>

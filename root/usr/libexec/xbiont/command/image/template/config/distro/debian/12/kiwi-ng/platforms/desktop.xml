@@ -49,6 +49,7 @@
 		<package name="pipewire-audio"/>
 		<package name="pipewire-jack"/>
 		<package name="pulseaudio-utils"/>
+		<package name="qt5-image-formats-plugins"/>
 		<!-- Networking -->
 		<package name="firewall-config"/> <!-- Firewall management -->
 		<!-- System -->

@@ -30,6 +30,7 @@
 				volid="${X_IMAGE_VOLUME_ID}"
 				application_id="${X_IMAGE_VOLUME_ID}">
 			<bootloader name="grub2"/>
+			<size unit="G">10</size>
 		</type>
 	</preferences>
 </image>

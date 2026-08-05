@@ -20,5 +20,6 @@ apt-get --assume-yes install \
         grub-pc-bin \
         python3-pip && \
 pip3 install ${X_PIP3_OPTIONS} --exists-action=i kiwi==10.2.* && \
+pip3 cache purge && \
 [ -e /usr/bin/bash ] || ln -s /bin/bash /usr/bin/bash && \
 apt-get autoclean
