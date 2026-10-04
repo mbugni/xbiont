@@ -1,6 +1,7 @@
 x::export_with_value 'X_DISTRO_ID' 'debian'
 x::export_with_value 'X_DISTRO_VERSION' '12'
 x::export_with_value 'X_DISTRO_NAME' 'Debian'
+x::export_with_value 'X_DISTRO_CODE' 'deb12'
 x::export_with_value 'X_DISTRO_CODENAME' 'bookworm'
 x::export_with_value 'X_DESKTOP_CODENAME' 'plasma'
 x::export_with_value 'X_DESKTOP_VERSION' '5'

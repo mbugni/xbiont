@@ -1,7 +1,0 @@
-x::export_with_value    'X_DISTRO_ID'       '$X_DISTRO_ID'
-x::export_with_value    'X_DISTRO_VERSION'  '$X_DISTRO_VERSION'
-x::export_with_value    'X_IMAGE_PLATFORM'  '$X_IMAGE_PLATFORM'
-x::export_with_default  'X_CONTAINER_TAG'   '$X_CONTAINER_TAG'
-x::export_with_default  'X_IMAGE_NAME'      '$X_IMAGE_NAME'
-x::export_with_default  'X_IMAGE_VERSION'   '$X_IMAGE_VERSION'
-x::export_with_default  'X_IMAGE_VOLUME_ID' '$X_IMAGE_VOLUME_ID'

@@ -20,5 +20,8 @@ for i in $(seq 0 7); do
     fi
 done
 
+# Ensure the command is executed in this host(container) environment
 export X_BUILD_RUNTIME='host'
+
+# Use the template source to run the final command
 exec ${X_BUILD_KIWING_DIR}/root/usr/bin/xbiont image build

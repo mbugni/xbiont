@@ -15,13 +15,13 @@ ln -s /<source-path>/root/usr/bin/xbiont ~/bin/xbiont
 
 ## Build the image (creating the digital life)
 
-### 1. Generate the image template (genetic instructions)
+### Generate the image template (genetic instructions)
 
 ```shell
 xbiont image template
 ```
 
-It creates a folder named `template` in the current directory.
+It creates a folder named `template` in the `image` directory.
 If you don't specify any distribution, it will use the current one (if supported).
 To prepare an image for a specific distribution, setup the environment variables:
 
@@ -31,31 +31,25 @@ xbiont image template X_DISTRO_ID=fedora X_DISTRO_VERSION=43
 
 See the [README](../README.md) documentation for more information about supported distributions.
 
-### 2. Build the container (prebiotic soup)
+### Build the image (digital organism genesis)
 
-To create a reusable container for building the image run:
+The build process creates a reusable local container named `xbiont:<distro>-<platform>` using the instructions from the `template` folder generated in the previous step.
 
-```shell
-xbiont image container
-```
-
-It creates a local container like `localhost/xbiont/<distro>-<version>` using the instructions from the `template` folder generated in the previous step.
 To see created containers:
 
 ```shell
 sudo podman images
 ```
 
-### 3. Build the image (digital organism genesis)
+The container act as prebiotic soup, providing the environment for the digital organism to grow.
 
-To build the system image run:
+To build the live image run:
 
 ```shell
 xbiont image build
 ```
 
-It uses the container built in the previous step to create the image using configuration files from the `template` folder.
-The root (system files) will be created in the `build` folder, while the `.iso` image will be created in the current folder.
+The root (system files) will be created in the `build` folder, while the `.iso` image will be created in the `image` folder.
 
 You can specify the interaction platform and locale to build for:
 

@@ -82,9 +82,9 @@
 		<package name="zstd"/>
 		<!-- RPM Fusion repositories -->
 		<package name="rpmfusion-free-release"/>
-		<!-- package name="rpmfusion-free-release-tainted"/ -->
+		<package name="rpmfusion-free-release-tainted"/>
 		<package name="rpmfusion-nonfree-release"/>
-		<!-- package name="rpmfusion-nonfree-release-tainted"/ -->
+		<package name="rpmfusion-nonfree-release-tainted"/>
 		<!-- package name="rpmfusion-*-appstream-data"/ -->
 	</packages>
 	<preferences profiles="Locale-en_US">

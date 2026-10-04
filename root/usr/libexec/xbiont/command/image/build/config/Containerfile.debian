@@ -1,8 +1,12 @@
-FROM ${X_CONTAINER_REGISTRY}:${X_DISTRO_VERSION}-slim
+ARG X_IMAGE_PLATFORM="x86_64"
 
+FROM docker.io/i386/debian:bookworm-slim AS bookworm-i686
+
+FROM docker.io/debian:bookworm-slim AS bookworm-x86_64
+
+FROM bookworm-${X_IMAGE_PLATFORM} AS deb12-${X_IMAGE_PLATFORM}
 COPY entrypoint.sh /usr/local/bin/
 ENTRYPOINT ["/usr/local/bin/entrypoint.sh"]
-
 RUN chmod +x /usr/local/bin/entrypoint.sh && \
 apt-get update && \
 apt-get --assume-yes upgrade && \
@@ -19,7 +23,8 @@ apt-get --assume-yes install \
         xorriso \
         grub-pc-bin \
         python3-pip && \
-pip3 install ${X_PIP3_OPTIONS} --exists-action=i kiwi==10.2.* && \
+pip3 install --break-system-packages --exists-action=i kiwi==10.3.* && \
 pip3 cache purge && \
-[ -e /usr/bin/bash ] || ln -s /bin/bash /usr/bin/bash && \
 apt-get autoclean
+
+FROM deb12-${X_IMAGE_PLATFORM} AS deb11-${X_IMAGE_PLATFORM}

@@ -1,0 +1,8 @@
+x::export_with_value 'X_DISTRO_ID' '$X_DISTRO_ID'
+x::export_with_value 'X_DISTRO_NAME' '$X_DISTRO_NAME'
+x::export_with_value 'X_DISTRO_VERSION' '$X_DISTRO_VERSION'
+x::export_with_value 'X_DISTRO_CODE' '$X_DISTRO_CODE'
+x::export_with_value 'X_DISTRO_CODENAME' '$X_DISTRO_CODENAME'
+x::export_with_default 'X_IMAGE_PLATFORM' '$X_IMAGE_PLATFORM'
+x::export_with_default 'X_IMAGE_NAME' '$X_IMAGE_NAME'
+x::export_with_default 'X_IMAGE_VERSION' '$X_IMAGE_VERSION'

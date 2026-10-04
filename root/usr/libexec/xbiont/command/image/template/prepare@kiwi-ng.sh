@@ -16,7 +16,7 @@ x::copy_and_resolve \
     '$X_IMAGE_NAME'\
     '$X_IMAGE_NAME' \
     '$X_IMAGE_VERSION' \
-    '$X_IMAGE_VOLUME_ID' \
+    '$X_IMAGE_NAME' \
     '$X_SEAT_LOCALE' \
     '$X_SEAT_KEYTABLE' \
     '$X_SEAT_KEYMODEL' \

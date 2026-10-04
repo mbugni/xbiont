@@ -23,16 +23,16 @@
 	<preferences arch="i686">
 		<type image="iso" flags="dmsquash" firmware="bios" kernelcmdline="splash quiet"
 				publisher="${X_IMAGE_NAME}"
-				volid="${X_IMAGE_VOLUME_ID}"
-				application_id="${X_IMAGE_VOLUME_ID}">
+				volid="${X_IMAGE_NAME}"
+				application_id="${X_IMAGE_NAME}">
 			<bootloader name="grub2"/>
 		</type>
 	</preferences>
 	<preferences arch="x86_64">
 		<type image="iso" flags="dmsquash" firmware="efi" kernelcmdline="splash quiet"
 				publisher="${X_IMAGE_NAME}"
-				volid="${X_IMAGE_VOLUME_ID}"
-				application_id="${X_IMAGE_VOLUME_ID}">
+				volid="${X_IMAGE_NAME}"
+				application_id="${X_IMAGE_NAME}">
 			<bootloader name="grub2"/>
 		</type>
 	</preferences>
