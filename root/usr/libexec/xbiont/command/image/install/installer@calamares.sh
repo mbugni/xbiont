@@ -3,7 +3,7 @@
 # SPDX-License-Identifier: GPL-2.0-or-later
 # Copyright (c) 2026 Massimiliano Bugni
 #
-# image-install/install@debian: run the image installer for Debian
+# image-install/install@calamares: run the image installer with Calamares
 
 installer_elevator="$(find /usr/lib -name kdesu)"
 
