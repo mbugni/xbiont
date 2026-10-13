@@ -1,0 +1,10 @@
+/* Allow members of the sudo group to execute package actions
+ * without password authentication.
+ */
+polkit.addRule(function(action, subject) {
+    if (action.id.startsWith("org.freedesktop.packagekit.") &&
+        subject.active == true && subject.local == true &&
+        subject.isInGroup("sudo")) {
+            return polkit.Result.YES;
+    }
+});

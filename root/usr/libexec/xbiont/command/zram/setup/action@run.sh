@@ -9,7 +9,7 @@ x::log_info "Setting up zram..."
 
 modprobe zram num_devices=1
 
-zram_algorithm='lzo-rle'
+zram_algorithm='lz4'
 zram_resize_factor=1
 zram_swappiness=80
 
@@ -35,7 +35,7 @@ zram_swappiness=$((zram_swappiness / zram_resize_factor))
 
 if [ "$X_SYSTEM_LIFECYCLE" = 'live' ]; then
     zram_resize_factor=$((zram_resize_factor * 2))
-    zram_algorithm='lzo-rle'
+    zram_algorithm='lz4'
 fi
 
 zram_size=$((ram_total_bytes / zram_resize_factor))

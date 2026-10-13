@@ -1,0 +1,5 @@
+APT::Install-Recommends "false";
+APT::Install-Suggests "false";
+// Options specific to Debian 12 (Bookworm) and later versions
+APT::AutoRemove::RecommendsImportant "false";
+APT::AutoRemove::SuggestsImportant "false";

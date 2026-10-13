@@ -1,0 +1,50 @@
+<image>
+	<profiles>
+		<profile name="Workstation" description="Workstation environment">
+			<requires profile="Desktop"/>
+		</profile>
+		<profile name="Workstation-en_US" description="Workstation with English (US) locale">
+			<requires profile="Workstation"/>
+			<requires profile="Desktop-en_US"/>
+		</profile>
+		<profile name="Workstation-it_IT" description="Workstation with Italian (IT) locale">
+			<requires profile="Workstation"/>
+			<requires profile="Desktop-it_IT"/>
+		</profile>
+	</profiles>
+	<packages type="image" profiles="Workstation">
+		<!-- Bluetooth -->
+		<package name="bluedevil"/>
+		<package name="bluez-firmware"/>
+		<package name="bluez-obexd"/>
+		<package name="bluez-tools"/>
+		<!-- Connectivity -->
+		<package name="kdeconnect"/>
+		<package name="kio-extras"/>
+		<!-- Hardware support -->
+		<package name="libsane-hpaio"/>
+		<!-- Networking -->
+		<package name="smbclient"/>
+		<!-- Printing -->
+		<package name="bluez-cups"/>
+		<package name="cups"/>
+		<package name="cups-browsed"/>
+		<package name="cups-filters"/>
+		<package name="cups-ipp-utils"/>
+		<package name="cups-pk-helper"/>
+		<package name="ghostscript"/>
+		<package name="ipp-usb"/>
+		<package name="printer-driver-gutenprint"/>
+		<package name="hplip"/>
+		<package name="paps"/>
+		<package name="print-manager"/>
+		<package name="system-config-printer-common"/>
+		<package name="system-config-printer-udev"/>
+		<!-- Scanning -->
+		<package name="sane-airscan"/>
+		<package name="sane-utils"/>
+	</packages>
+	<packages type="delete" profiles="Workstation">
+        <package name="falkon"/>
+    </packages>
+</image>

@@ -6,10 +6,20 @@
 # live-debian/setup@seat: setup live interaction for Debian
 
 function x::setup_installer_application() {
-    echo 'Hide original installer action'
-    desktop-file-edit --set-key=Hidden --set-value=true /usr/share/applications/install-debian.desktop
+    local installer_action_file='/usr/share/applications/calamares-install-debian.desktop'
+    if [ ! -f "$installer_action_file" ]; then
+        # Debian 12 and earlier
+        installer_action_file='/usr/share/applications/install-debian.desktop'
+    fi
 
-    echo 'Hide original installer icon'
+    if [ -f "$installer_action_file" ]; then
+        echo 'Hide original installer launcher action'
+        desktop-file-edit --set-key=Hidden --set-value=true "$installer_action_file"
+    else
+        x::log_warn 'Installer launcher action file not found'
+    fi
+
+    echo 'Hide original installer desktop icon'
     desktop-file-edit --set-key=Hidden --set-value=true /etc/xdg/autostart/calamares-desktop-icon.desktop
 
     echo 'Rename installer launcher'

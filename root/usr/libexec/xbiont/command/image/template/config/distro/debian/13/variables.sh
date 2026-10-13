@@ -1,0 +1,8 @@
+x::export_with_value 'X_DISTRO_ID' 'debian'
+x::export_with_value 'X_DISTRO_VERSION' '13'
+x::export_with_value 'X_DISTRO_NAME' 'Debian'
+x::export_with_value 'X_DISTRO_CODE' 'deb13'
+x::export_with_value 'X_DISTRO_CODENAME' 'trixie'
+x::export_with_value 'X_DESKTOP_CODENAME' 'plasma'
+x::export_with_value 'X_DESKTOP_VERSION' '6'
+x::export_with_default 'X_IMAGE_PLATFORM' 'x86_64'
