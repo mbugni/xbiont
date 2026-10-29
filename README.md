@@ -5,11 +5,11 @@ You can build and [try the live image](https://virt-manager.org), then install i
 your PC if you want.
 You can also customize the image starting from generated recipes.
 
-## Why the symbiont?
+## The biological metaphor
 
-A symbiont is a living being that lives in symbiosis with another living being.
-In this case, the symbiont lives in symbiosis with the Linux system.
-Like a cooperative digital organism, it provides services and utilities to the system.
+The name "symbiont" is inspired by the biological concept of a symbiotic relationship, where two different organisms live together in close association, often benefiting each other. In this context, the symbiont represents a digital organism that lives in symbiosis with the Linux system, providing services and utilities to the system.
+
+Like a cooperative digital organism, it assists during the entire [life cycle of the system](./docs/lifecycle.md), from building to installation and maintenance.
 
 Main goals of the symbiont are:
 * Building and installing the system through an image
@@ -18,20 +18,7 @@ Main goals of the symbiont are:
 * Expanding the system usage (extra-repos, support for external devices)
 * Survive and evolve
 
-## How it works
-
-The symbiont is built using [Kiwi NG](https://osinside.github.io/kiwi/) and 
-[Podman](https://podman.io/).
-It assists during the entire life cycle of the system, from building to installation and maintenance.
-It is configured using environment variables, that act like a DNA.
-Variables can be set at build time or at runtime: in most cases are automatically detected from the system.
-When the symbiont receives a signal, it performs actions driven by the DNA and activates a sequence of small scripts.
-The symbiont uses systemd, bash and basic shell commands to perform its tasks.
-
-See the [lifecycle documentation](./docs/lifecycle.md) for more details.
-
-For each lifecycle stage, the symbiont provides a specific set of profiles and features.
-The stage can be customized by setting the [environment variables](./docs/environment.md).
+Xbiont [works as a digital organism](./docs/how-it-works.md) that has a nervous system to coordinate and configure actions and tools. When the symbiont receives a signal, it performs actions driven by variables and activates a sequence of small scripts.
 
 ## Supported distributions
 
@@ -46,6 +33,8 @@ The following table illustrates the supported distributions and their intended t
 | Fedora 43    | x86_64       | 2025-now     | KDE Plasma 6.x  |
 | Fedora 44    | x86_64       | 2025-now     | KDE Plasma 6.x  |
 
+## Basic components
+
 The fundamental building blocks of the symbiont are:
 
 * KDE-based desktop - for providing a graphical user interface
@@ -54,10 +43,10 @@ The fundamental building blocks of the symbiont are:
 * Kiwi NG - for building the system image
 * Podman - for building in an isolated environment
 
-## Licensing (SPDX-License-Identifier: GPL-2.0-or-later)
-This program is free software; you can redistribute it and/or modify it under the terms of
-the GNU General Public License version 2 as published by the Free Software Foundation, or
-(at your option) any later version.
+## Licensing (SPDX-License-Identifier: GPL-3.0-or-later)
+This is free software: you can redistribute it and/or modify it under the terms of
+the GNU General Public License as published by the Free Software Foundation, under
+version 3 of the License, or (at your option) any later version.
 
 This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY;
 without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.

@@ -1,6 +1,6 @@
 #!/usr/bin/bash
 #
-# SPDX-License-Identifier: GPL-2.0-or-later
+# SPDX-License-Identifier: GPL-3.0-or-later
 # Copyright (c) 2026 Massimiliano Bugni
 #
 # system-cleanup/action@run.sh: remove unnecessary stuff, if present
@@ -13,7 +13,7 @@ if [ -e /.profile ]; then
     [ -e /.kconfig ] && rm -f /.kconfig
 fi
 
-for image_log_file in /var/log/xbiont/command/image*.log; do
+for image_log_file in $X_ACTIONABLE_LOG_DIR/image*.log; do
     rm -f "$image_log_file"
 done
 

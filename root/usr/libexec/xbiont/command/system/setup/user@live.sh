@@ -1,6 +1,6 @@
 #!/usr/bin/bash
 #
-# SPDX-License-Identifier: GPL-2.0-or-later
+# SPDX-License-Identifier: GPL-3.0-or-later
 # Copyright (c) 2026 Massimiliano Bugni
 #
 # system-setup/user@live: ensure liveuser and basic settings
