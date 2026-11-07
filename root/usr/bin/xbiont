@@ -51,10 +51,10 @@ case "$X_ACTIONABLE_LOG_MODE" in
         x::execute_activations "$invoked_action"
         exit $?
         ;;
-    file) ;;
-    *) 
+    file|split) ;;
+    *)
         echo "Invalid X_ACTIONABLE_LOG_MODE: $X_ACTIONABLE_LOG_MODE" >&2
-        exit 1 
+        exit 1
         ;;
 esac
 
@@ -71,5 +71,11 @@ fi
 
 actionable_log_file="${X_ACTIONABLE_LOG_DIR}/${invoked_service}-${invoked_request}.log"
 
-x::execute_activations "$invoked_action" 2>&1 | tee "$actionable_log_file"
+# 'file' merges diagnostics into the log; 'split' keeps stderr untouched so
+# structured output on stdout stays consumable (e.g. by frontend processes)
+if [ "$X_ACTIONABLE_LOG_MODE" = "split" ]; then
+    x::execute_activations "$invoked_action" | tee "$actionable_log_file"
+else
+    x::execute_activations "$invoked_action" 2>&1 | tee "$actionable_log_file"
+fi
 exit "${PIPESTATUS[0]}"

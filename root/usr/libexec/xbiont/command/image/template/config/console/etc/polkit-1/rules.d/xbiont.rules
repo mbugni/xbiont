@@ -1,0 +1,13 @@
+// SPDX-License-Identifier: GPL-3.0-or-later
+// Copyright (c) 2026 Massimiliano Bugni
+//
+// Allow wheel/sudo group members to run any xbiont command through pkexec
+// without a password prompt: on live media liveuser has no password, and
+// wheel/sudo users already hold equivalent privileges via sudo.
+polkit.addRule(function(action, subject) {
+    if (action.id === "org.freedesktop.policykit.exec" &&
+        (subject.isInGroup("wheel") || subject.isInGroup("sudo")) &&
+        action.lookup("program") === "/usr/bin/xbiont") {
+        return polkit.Result.YES;
+    }
+});

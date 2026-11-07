@@ -5,92 +5,17 @@ from pathlib import Path
 from qtpy import QtCore, QtWidgets
 
 
-class Backend(QtCore.QObject):
-    message = QtCore.Signal(dict)
-    diagnostic = QtCore.Signal(str)
-    finished = QtCore.Signal(bool)
-
-    def __init__(self, parent, step, values):
-        super().__init__(parent)
-        self.buffer = b""
-        self.valid = True
-        self.received = False
-        self.process = QtCore.QProcess(self)
-        self.process.readyReadStandardOutput.connect(self.read)
-        self.process.readyReadStandardError.connect(self.read_error)
-        self.process.finished.connect(self.done)
-        self.process.errorOccurred.connect(self.failed)
-        self.step = step
-        self.values = values
-
-    def start(self):
-        self.process.started.connect(self.send)
-        launcher = Path(__file__).resolve().parents[5] / "bin/xbiont"
-        self.process.start(str(launcher), ["run", "installer", "X_ACTIONABLE_LOG_MODE=passthrough", f"X_INSTALL_REQUEST={self.step}"])
-
-    def send(self):
-        self.process.write(json.dumps(self.values).encode())
-        self.process.closeWriteChannel()
-
-    def read(self):
-        self.buffer += bytes(self.process.readAllStandardOutput())
-        while b"\n" in self.buffer:
-            line, self.buffer = self.buffer.split(b"\n", 1)
-            try:
-                event = json.loads(line)
-                if not isinstance(event, dict) or event.get("version") != 1 or event.get("type") not in ("targets", "boot", "plan", "progress", "command", "error", "completed"):
-                    raise ValueError("Unsupported backend message")
-                required = {
-                    "targets": {"targets": list},
-                    "boot": {"options": list, "default": str},
-                    "plan": {"target": dict, "boot_mode": str, "execution": str, "layout": str, "warning": str, "warnings": list},
-                    "progress": {"percent": int, "message": str},
-                    "command": {"argv": list},
-                    "error": {"code": str, "message": str},
-                    "completed": {"success": bool, "execution": str},
-                }
-                if any(type(event.get(key)) is not kind for key, kind in required[event["type"]].items()):
-                    raise ValueError("Incomplete backend message")
-                if event["type"] == "progress" and not 0 <= event["percent"] <= 100:
-                    raise ValueError("Invalid progress percentage")
-                records = event["targets"] if event["type"] == "targets" else [event["target"]] if event["type"] == "plan" else []
-                for record in records:
-                    if not isinstance(record, dict) or any(not isinstance(record.get(key), str) for key in ("path", "kind", "description")) or type(record.get("size_bytes")) is not int:
-                        raise ValueError("Invalid target record")
-                if event["type"] == "boot" and (not event["options"] or any(not isinstance(option, dict) or any(not isinstance(option.get(key), str) for key in ("id", "label")) for option in event["options"]) or event["default"] not in [option["id"] for option in event["options"]]):
-                    raise ValueError("Invalid boot options")
-                if event["type"] == "command" and any(not isinstance(value, str) for value in event["argv"]):
-                    raise ValueError("Invalid command arguments")
-                if event["type"] == "plan" and any(not isinstance(value, str) for value in event["warnings"]):
-                    raise ValueError("Invalid plan warnings")
-                self.received = True
-                if event["type"] == "error":
-                    self.valid = False
-                    self.diagnostic.emit(event["message"] + "\n")
-                self.message.emit(event)
-            except (ValueError, UnicodeError) as error:
-                self.valid = False
-                self.diagnostic.emit(f"Invalid backend output: {error}\n")
-
-    def read_error(self):
-        self.diagnostic.emit(bytes(self.process.readAllStandardError()).decode(errors="replace"))
-
-    def done(self, code, status):
-        self.read()
-        self.read_error()
-        self.finished.emit(self.valid and self.received and not self.buffer and code == 0 and status == QtCore.QProcess.ExitStatus.NormalExit)
-
-    def failed(self, error):
-        if error == QtCore.QProcess.ProcessError.FailedToStart:
-            self.diagnostic.emit(self.process.errorString() + "\n")
-            self.finished.emit(False)
+# The module directory is not on sys.path when this file is loaded through
+# importlib (e.g. by tests), so it is added explicitly
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+from wizard_backend import Backend
 
 
 class Installer(QtWidgets.QWizard):
     def __init__(self):
         super().__init__()
         self.setWindowTitle("Xbiont Installer — Preview")
-        self.resize(700, 425)
+        self.resize(700, 500)
         self.setOption(QtWidgets.QWizard.WizardOption.NoBackButtonOnLastPage)
         self.running = False
         self.scan_process = None
@@ -152,14 +77,14 @@ class Installer(QtWidgets.QWizard):
         self.review_warning.setTextFormat(QtCore.Qt.TextFormat.PlainText)
         self.review_warning.setWordWrap(True)
         layout.addWidget(self.review_warning)
-        notice = QtWidgets.QLabel("Dry-run preview only. No installation changes will be made.")
+        notice = QtWidgets.QLabel("Dry-run preview only. No installation changes will be made, but administrator authorization is required to continue.")
         notice.setWordWrap(True)
         layout.addWidget(notice)
         layout.addStretch()
         self.review_page.setCommitPage(True)
         self.setButtonText(QtWidgets.QWizard.WizardButton.CommitButton, "Start dry run")
 
-        self.progress_page, layout = self.create_page("Installation preview", "Commands are recorded, not executed. No authorization is requested.")
+        self.progress_page, layout = self.create_page("Installation preview", "Commands are recorded, not executed. Authorization is required to start the preview.")
         self.status = QtWidgets.QLabel("Ready")
         self.status.setWordWrap(True)
         layout.addWidget(self.status)
@@ -234,6 +159,8 @@ class Installer(QtWidgets.QWizard):
             button.setChecked(option["id"] == event["default"])
 
     def invalidate_plan(self):
+        # The summary request is asynchronous; a generation counter drops
+        # late replies that would show a plan for a stale selection
         if hasattr(self, "plan_generation"):
             self.plan_generation += 1
             self.plan = None
@@ -243,6 +170,8 @@ class Installer(QtWidgets.QWizard):
         return {"target": self.targets.selectedItems()[0].text(0), "boot_mode": self.boot.checkedButton().property("boot_mode"), "execution": "dryrun"}
 
     def log_text(self, text):
+        # Diagnostics go to the details pane and to stderr so they also
+        # land in the run log produced by the xbiont launcher
         self.details.insertPlainText(text)
         sys.stderr.write(text)
         sys.stderr.flush()
@@ -309,6 +238,8 @@ class Installer(QtWidgets.QWizard):
 
     def finished_preview(self, success):
         self.running = False
+        # A clean process exit is not enough: success also requires the
+        # backend's explicit 'completed' event
         success = success and self.completed
         self.status.setText("Dry run completed. No installation changes were made." if success else "Preview failed. Review the command log for details.")
         if success:

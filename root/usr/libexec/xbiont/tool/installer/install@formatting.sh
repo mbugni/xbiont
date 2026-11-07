@@ -10,9 +10,10 @@ x::export_with_default 'X_INSTALL_PERCENTAGE_MAX' "100"
 
 # Predefined filesystems: ext4 for Debian, xfs for Fedora/CentOS
 case "$X_DISTRO_ID" in
-debian|ubuntu) X_INSTALL_FS_TYPE="ext4" ;;
+debian) X_INSTALL_FS_TYPE="ext4" ;;
 *) X_INSTALL_FS_TYPE="xfs" ;;
 esac
+x::install_state_set 'X_INSTALL_FS_TYPE' "$X_INSTALL_FS_TYPE"
 
 install_esp_partition=$(x::install_esp_partition)
 install_root_partition=$(x::install_root_partition)
@@ -21,10 +22,25 @@ x::install_progress $X_INSTALL_PERCENTAGE_MIN "Formatting $install_root_partitio
 
 if [ "$(x::install_target_type)" == "disk" ]; then
     # ESP was just created: format it as FAT32
+    x::install_exec wipefs -a -f "$install_esp_partition"
     x::install_exec mkfs.vfat -F32 -n EFI "$install_esp_partition"
 fi
 
-# The root partition is always formatted, regardless of the selection type
-x::install_exec "mkfs.$X_INSTALL_FS_TYPE" -f -L root "$install_root_partition"
+# The root partition is always formatted, regardless of the selection type;
+# stale signatures are wiped first so they cannot confuse mkfs or mounts
+x::install_exec wipefs -a -f "$install_root_partition"
+case "$X_INSTALL_FS_TYPE" in
+ext4) x::install_exec mkfs.ext4 -F -L root "$install_root_partition" ;;
+xfs) x::install_exec mkfs.xfs -f -L root "$install_root_partition" ;;
+esac
+
+# Capture the filesystem UUIDs once; later steps reuse them for fstab,
+# the kernel command line and the ESP stub
+install_root_uuid=$(blkid -s UUID -o value "$install_root_partition" 2>/dev/null || true)
+x::install_state_set 'X_INSTALL_ROOT_UUID' "${install_root_uuid:-UNKNOWN}"
+if [ -n "$install_esp_partition" ]; then
+    install_esp_uuid=$(blkid -s UUID -o value "$install_esp_partition" 2>/dev/null || true)
+    x::install_state_set 'X_INSTALL_ESP_UUID' "${install_esp_uuid:-UNKNOWN}"
+fi
 
 x::install_progress $X_INSTALL_PERCENTAGE_MAX "Formatting completed."

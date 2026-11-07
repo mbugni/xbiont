@@ -10,5 +10,5 @@ if [ -n "${X_INSTALL_REQUEST:-}" ]; then
 else
     export QT_API=pyqt6
     export X_INSTALL_EXECUTION=dryrun
-    python3 "$X_ACTIONABLE_DIR/module/wizard-graphical.py"
+    python3 "$X_ACTIONABLE_DIR/module/wizard_graphical.py"
 fi
