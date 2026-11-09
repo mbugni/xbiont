@@ -52,6 +52,7 @@
 		<package name="net-tools"/>
 		<package name="firewalld"/> <!-- Firewall management -->
 		<package name="systemd-resolved"/>
+		<package name="systemd-timesyncd"/>
 		<package name="wget"/>
 		<package name="wireless-regdb"/>
 		<package name="wpa_supplicant"/>

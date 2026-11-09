@@ -3,7 +3,7 @@
 # SPDX-License-Identifier: GPL-3.0-or-later
 # Copyright (c) 2026 Massimiliano Bugni
 #
-# image-setup/setup@network: configure live image networking
+# image/setup/setup@network: configure image network settings
 
 x::log_info "Setup networking for ${X_SYSTEM_HOSTNAME}"
 
@@ -17,4 +17,9 @@ fi
 if [[ "$(systemctl is-enabled NetworkManager.service)" != 'enabled' ]]; then
 	echo 'Enable NetworkManager service'
 	systemctl enable NetworkManager.service
+fi
+
+if [[ "$(systemctl is-enabled systemd-timesyncd.service)" != 'enabled' ]]; then
+	echo 'Enable systemd-timesyncd service'
+	systemctl enable systemd-timesyncd.service
 fi
