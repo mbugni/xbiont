@@ -6,15 +6,12 @@
 		</profile>
 	</profiles>
 	<packages type="image" profiles="LiveSystemCore">
-		<package name="jq"/>
 		<package name="dracut-live"/>
 		<package name="dracut-network"/>
 		<package name="dracut-squash"/>
 		<package name="plymouth-scripts"/>
 	</packages>
 	<packages type="image" profiles="LiveSystemGraphical">
-		<package name="python3-QtPy"/>
-		<package name="python3-pyqt6-base"/>
 		<!-- Filter out unwanted EFI files from the embedded ESP, see rhbz#2358785 -->
 		<file name="iso-esp-excludes.yaml" target="image/exclude_files_efifatimage.yaml"/>
 		<!-- Graphical boot -->

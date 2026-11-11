@@ -27,3 +27,7 @@ x::install_file "${X_PULSE_DIR}/xbiont" "$X_TEMPLATE_TARGET_DIR/kiwi-ng/root/usr
 x::log_info 'Copying xbiont core directory...'
 mkdir -p "$X_TEMPLATE_TARGET_DIR/kiwi-ng/root/usr/libexec"
 cp -R "${X_CORE_DIR}" "${X_TEMPLATE_TARGET_DIR}/kiwi-ng/root/usr/libexec"
+
+# Drop unwanted files (see .gitignore)
+find "$X_TEMPLATE_TARGET_DIR/kiwi-ng/root/usr/libexec/xbiont" \
+    -type d -name '__pycache__' -exec rm -rf {} +
