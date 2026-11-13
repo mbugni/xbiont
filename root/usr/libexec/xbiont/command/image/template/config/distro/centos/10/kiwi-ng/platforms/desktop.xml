@@ -55,6 +55,7 @@
 		<package name="firewall-config"/>
 		<!-- System -->
 		<package name="flatpak"/>
+		<package name="fuse-overlayfs"/>
 		<package name="lm_sensors"/>
 		<package name="tuned-ppd"/>
 		<package name="udisks2"/>

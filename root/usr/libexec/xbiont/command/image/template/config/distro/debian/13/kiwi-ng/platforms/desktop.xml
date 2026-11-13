@@ -51,10 +51,12 @@
 		<package name="pipewire-jack"/>
 		<package name="pulseaudio-utils"/>
 		<package name="qt6-image-formats-plugins"/>
+		<package name="libqt6graphs6"/>
 		<!-- Networking -->
 		<package name="firewall-config"/> <!-- Firewall management -->
 		<!-- System -->
 		<package name="flatpak"/>
+		<package name="fuse-overlayfs"/>
 		<package name="lm-sensors"/>
 		<package name="tuned-ppd"/> <!-- Resource profiles -->
 		<package name="udisks2"/>
